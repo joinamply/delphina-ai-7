@@ -26,15 +26,16 @@ export default defineStackbitConfig({
       }
     }),
   ],
-  siteMap: ({ allDocuments }) => {
-    return allDocuments
+  siteMap: ({ documents }) => {
+    return documents
       .filter((d) => d.modelName === 'Page')
       .map((d) => {
+        const page = d as any;
         return {
           stableId: d.id,
-          urlPath: d.slug === 'index' ? '/' : `/${d.slug}`,
+          urlPath: page.slug === 'index' ? '/' : `/${page.slug}`,
           document: d,
-          isHomePage: d.slug === 'index',
+          isHomePage: page.slug === 'index',
         };
       });
   },
