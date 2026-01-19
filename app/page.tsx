@@ -24,8 +24,8 @@ async function getData() {
 
 export default async function Home() {
   const data = await getData()
-  // ID is relative to project root
-  const objectId = "content/pages/index.json"
+  // ID is relative to content source "content" dir
+  const objectId = "pages/index.json"
 
   return (
     <div className="flex flex-col min-h-screen" data-sb-object-id={objectId}>
