@@ -3,7 +3,11 @@
 import { Button } from "@/components/ui/button"
 import { ArrowRight, PlayCircle } from "lucide-react"
 
-export function Hero() {
+interface HeroProps {
+    heading?: string
+}
+
+export function Hero({ heading }: HeroProps) {
     return (
         <section className="bg-[#1E1035] text-[#FFFDF7] pt-24 pb-32 px-4 relative overflow-hidden">
             {/* Background Gradients/Effects could go here */}
@@ -18,8 +22,12 @@ export function Hero() {
                     </div>
 
                     <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-[1.1]">
-                        AI Agent for <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D956A8] to-[#C4B5FD]">Data Science</span>
+                        {heading || (
+                            <>
+                                AI Agent for <br />
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D956A8] to-[#C4B5FD]">Data Science</span>
+                            </>
+                        )}
                     </h1>
 
                     <p className="text-xl text-[#FFFDF7]/70 max-w-lg leading-relaxed">

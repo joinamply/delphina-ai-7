@@ -8,13 +8,27 @@ import { StatsSection } from "@/components/home/stats-section"
 import { Testimonials } from "@/components/home/testimonials"
 import { CTA } from "@/components/home/cta"
 import { Footer } from "@/components/home/footer"
+import fs from "fs/promises"
+import path from "path"
 
-export default function Home() {
+async function getData() {
+  const filePath = path.join(process.cwd(), "content/pages/index.json")
+  try {
+    const fileContent = await fs.readFile(filePath, "utf8")
+    return JSON.parse(fileContent)
+  } catch (error) {
+    console.error("Error reading content file:", error)
+    return {}
+  }
+}
+
+export default async function Home() {
+  const data = await getData()
   return (
     <div className="flex flex-col min-h-screen">
       <AnnouncementBar />
       <Navbar />
-      <Hero />
+      <Hero heading={data.title} />
       <LogoMarquee />
 
       {/* Feature 1: Prototype */}
