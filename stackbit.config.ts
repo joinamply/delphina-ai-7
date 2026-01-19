@@ -24,6 +24,18 @@ export default defineStackbitConfig({
         uploadDir: 'images',
         publicPath: '/'
       }
-    })
-  ]
+    }),
+  ],
+  siteMap: ({ allDocuments }) => {
+    return allDocuments
+      .filter((d) => d.modelName === 'Page')
+      .map((d) => {
+        return {
+          stableId: d.id,
+          urlPath: d.slug === 'index' ? '/' : `/${d.slug}`,
+          document: d,
+          isHomePage: d.slug === 'index',
+        };
+      });
+  },
 });
