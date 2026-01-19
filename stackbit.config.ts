@@ -50,6 +50,7 @@ export default defineStackbitConfig({
       .filter((d) => d.modelName === 'Page')
       .map((d) => {
         const page = d as any;
+        console.log('DEBUG: Document ID:', d.id);
         return {
           stableId: d.id,
           urlPath: page.slug === 'index' ? '/' : `/${page.slug}`,
