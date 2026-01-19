@@ -21,7 +21,7 @@ export function Hero({ heading }: HeroProps) {
                         v2.0 Public Beta
                     </div>
 
-                    <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-[1.1]">
+                    <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-[1.1]" data-sb-field-path="title">
                         {heading || (
                             <>
                                 AI Agent for <br />

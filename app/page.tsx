@@ -25,7 +25,7 @@ async function getData() {
 export default async function Home() {
   const data = await getData()
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen" data-sb-object-id="content/pages/index.json">
       <AnnouncementBar />
       <Navbar />
       <Hero heading={data.title} />
