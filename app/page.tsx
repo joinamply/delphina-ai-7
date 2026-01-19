@@ -28,44 +28,38 @@ export default async function Home() {
     <div className="flex flex-col min-h-screen" data-sb-object-id="content/pages/index.json">
       <AnnouncementBar />
       <Navbar />
-      <Hero heading={data.title} />
+      <Hero
+        heading={data.heroHeading}
+        subheading={data.heroSubheading}
+        primaryCta={data.heroPrimaryCta}
+        secondaryCta={data.heroSecondaryCta}
+      />
       <LogoMarquee />
 
-      {/* Feature 1: Prototype */}
-      <FeatureSection
-        badge="Prototype"
-        title="Prototype new ideas in minutes"
-        description="Don't waste time on infrastructure. Spin up a new model environment with one click and start experimenting immediately."
-        accentColor="bg-[#D956A8]"
-      />
+      {/* Dynamic Features List */}
+      <div data-sb-field-path="features">
+        {data.features?.map((feature: any, index: number) => (
+          <FeatureSection
+            key={index}
+            badge={feature.badge}
+            title={feature.title}
+            description={feature.description}
+            imageSide={feature.imageSide}
+            buttonText={feature.buttonText}
+            data-sb-field-path={`.${index}`}
+          // We need to implement a way to map accent colors if dynamic, keeping default for now or adding to model
+          // Keeping static colors per existing logic is hard if order changes. 
+          // Ideally we add color to the model. For now, let's use a cycling color or default.
+          // But wait, the previous code hardcoded colors. Let's just pass the data props for now.
+          // We'll add data-sb-object-id to feature section wrapper if possible, but list items are tricky without IDs.
+          // Standard way is data-sb-field-path={`features.${index}`} on the component wrapper.
+          />
+        ))}
+      </div>
 
-      {/* Feature 2: Collaborate */}
-      <FeatureSection
-        badge="Collaborate"
-        title="Make smart models together"
-        description="Real-time collaboration for data science teams. Share notebooks, version control datasets, and track experiments."
-        imageSide="left"
-        accentColor="bg-[#6EE7B7]"
-        className="bg-[#FFFDF7]"
-      />
+      {/* If no features in data (fallback to hardcoded for safety? No, removing hardcoded to fully switch) */}
 
-      {/* Feature 3: Deploy */}
-      <FeatureSection
-        badge="Deploy"
-        title="Push models to production"
-        description="Automated CI/CD pipelines for your ML models. Deploy to Kubernetes with a single git push."
-        accentColor="bg-[#C4B5FD]"
-      />
-
-      {/* Feature 4: Deploy instant */}
-      <FeatureSection
-        badge="Instant"
-        title="Deploy instantly"
-        description="No more waiting for DevOps. Delphina handles the scaling and monitoring for you."
-        imageSide="left"
-        accentColor="bg-[#FDA4AF]"
-      />
-
+      {/* Keeping TabsSection Separate as it wasn't requested explicitly yet, or we assume it's static structure */}
       <TabsSection />
 
       <StatsSection />

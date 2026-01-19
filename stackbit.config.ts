@@ -15,7 +15,26 @@ export default defineStackbitConfig({
           type: "page",
           urlPath: "/{slug}",
           filePath: "content/pages/{slug}.json",
-          fields: [{ name: "title", type: "string", required: true }]
+          fields: [
+            { name: "title", type: "string", required: true },
+            { name: "heroHeading", type: "string", default: "AI Agent for Data Science" },
+            { name: "heroSubheading", type: "string", default: "Automate your data workflow, generate insights, and build predictive models in minutes." },
+            { name: "heroPrimaryCta", type: "string", default: "Start Building" },
+            { name: "heroSecondaryCta", type: "string", default: "Watch Demo" },
+            {
+              name: "features",
+              type: "list",
+              items: {
+                type: "object", fields: [
+                  { name: "badge", type: "string" },
+                  { name: "title", type: "string" },
+                  { name: "description", type: "string" },
+                  { name: "imageSide", type: "enum", options: ["left", "right"], default: "right" },
+                  { name: "buttonText", type: "string" },
+                ]
+              }
+            }
+          ]
         }
       ],
       assetsConfig: {

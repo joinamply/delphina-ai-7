@@ -1,4 +1,34 @@
 {
     "title": "Delphina AI",
-    "slug": "index"
+    "slug": "index",
+    "heroHeading": "AI Agent for Data Science",
+    "heroSubheading": "Automate your data workflow, generate insights, and build predictive models in minutes, not weeks.",
+    "heroPrimaryCta": "Start Building",
+    "heroSecondaryCta": "Watch Demo",
+    "features": [
+        {
+            "badge": "Prototype",
+            "title": "Prototype new ideas in minutes",
+            "description": "Don't waste time on infrastructure. Spin up a new model environment with one click and start experimenting immediately.",
+            "imageSide": "right"
+        },
+        {
+            "badge": "Collaborate",
+            "title": "Make smart models together",
+            "description": "Real-time collaboration for data science teams. Share notebooks, version control datasets, and track experiments.",
+            "imageSide": "left"
+        },
+        {
+            "badge": "Deploy",
+            "title": "Push models to production",
+            "description": "Automated CI/CD pipelines for your ML models. Deploy to Kubernetes with a single git push.",
+            "imageSide": "right"
+        },
+        {
+            "badge": "Instant",
+            "title": "Deploy instantly",
+            "description": "No more waiting for DevOps. Delphina handles the scaling and monitoring for you.",
+            "imageSide": "left"
+        }
+    ]
 }

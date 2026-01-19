@@ -10,8 +10,9 @@ interface FeatureSectionProps {
     buttonText?: string
     imageSide?: "left" | "right"
     className?: string
-    // For placeholder image colors
     accentColor?: string
+    // Annotation support
+    "data-sb-field-path"?: string
 }
 
 export function FeatureSection({
@@ -21,10 +22,11 @@ export function FeatureSection({
     buttonText = "Learn more",
     imageSide = "right",
     className,
-    accentColor = "bg-primary"
+    accentColor = "bg-primary",
+    "data-sb-field-path": fieldPath
 }: FeatureSectionProps) {
     return (
-        <section className={cn("py-20 md:py-32 overflow-hidden", className)}>
+        <section className={cn("py-20 md:py-32 overflow-hidden", className)} data-sb-field-path={fieldPath}>
             <div className="container mx-auto px-4">
                 <div className={cn(
                     "flex flex-col gap-12 lg:gap-20 items-center",
@@ -32,16 +34,16 @@ export function FeatureSection({
                 )}>
                     {/* Text Content */}
                     <div className="flex-1 space-y-6">
-                        <Badge variant="outline" className="w-fit text-primary border-primary/20 bg-primary/5">
+                        <Badge variant="outline" className="w-fit text-primary border-primary/20 bg-primary/5" data-sb-field-path=".badge">
                             {badge}
                         </Badge>
-                        <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-[#1E1035]">
+                        <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-[#1E1035]" data-sb-field-path=".title">
                             {title}
                         </h2>
-                        <p className="text-lg text-muted-foreground leading-relaxed max-w-xl">
+                        <p className="text-lg text-muted-foreground leading-relaxed max-w-xl" data-sb-field-path=".description">
                             {description}
                         </p>
-                        <Button variant="outline" className="group">
+                        <Button variant="outline" className="group" data-sb-field-path=".buttonText">
                             {buttonText} <span className="ml-2 transition-transform group-hover:translate-x-1">&rarr;</span>
                         </Button>
                     </div>

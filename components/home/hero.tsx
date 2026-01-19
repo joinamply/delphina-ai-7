@@ -5,9 +5,12 @@ import { ArrowRight, PlayCircle } from "lucide-react"
 
 interface HeroProps {
     heading?: string
+    subheading?: string
+    primaryCta?: string
+    secondaryCta?: string
 }
 
-export function Hero({ heading }: HeroProps) {
+export function Hero({ heading, subheading, primaryCta, secondaryCta }: HeroProps) {
     return (
         <section className="bg-[#1E1035] text-[#FFFDF7] pt-24 pb-32 px-4 relative overflow-hidden">
             {/* Background Gradients/Effects could go here */}
@@ -21,25 +24,20 @@ export function Hero({ heading }: HeroProps) {
                         v2.0 Public Beta
                     </div>
 
-                    <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-[1.1]" data-sb-field-path="title">
-                        {heading || (
-                            <>
-                                AI Agent for <br />
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D956A8] to-[#C4B5FD]">Data Science</span>
-                            </>
-                        )}
+                    <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-[1.1]" data-sb-field-path="heroHeading">
+                        {heading || "AI Agent for Data Science"}
                     </h1>
 
-                    <p className="text-xl text-[#FFFDF7]/70 max-w-lg leading-relaxed">
-                        Automate your data workflow, generate insights, and build predictive models in minutes, not weeks.
+                    <p className="text-xl text-[#FFFDF7]/70 max-w-lg leading-relaxed" data-sb-field-path="heroSubheading">
+                        {subheading || "Automate your data workflow, generate insights, and build predictive models in minutes, not weeks."}
                     </p>
 
                     <div className="flex flex-wrap gap-4 pt-2">
-                        <Button size="lg" className="bg-[#6EE7B7] text-[#1E1035] hover:bg-[#6EE7B7]/90 font-semibold h-12 px-8">
-                            Start Building <ArrowRight className="ml-2 w-4 h-4" />
+                        <Button size="lg" className="bg-[#6EE7B7] text-[#1E1035] hover:bg-[#6EE7B7]/90 font-semibold h-12 px-8" data-sb-field-path="heroPrimaryCta">
+                            {primaryCta || "Start Building"} <ArrowRight className="ml-2 w-4 h-4" />
                         </Button>
-                        <Button variant="outline" size="lg" className="border-[#FFFDF7]/20 text-[#FFFDF7] hover:bg-[#FFFDF7]/10 h-12 px-8">
-                            <PlayCircle className="mr-2 w-4 h-4" /> Watch Demo
+                        <Button variant="outline" size="lg" className="border-[#FFFDF7]/20 text-[#FFFDF7] hover:bg-[#FFFDF7]/10 h-12 px-8" data-sb-field-path="heroSecondaryCta">
+                            <PlayCircle className="mr-2 w-4 h-4" /> {secondaryCta || "Watch Demo"}
                         </Button>
                     </div>
                 </div>
