@@ -45,12 +45,13 @@ export default defineStackbitConfig({
       }
     }),
   ],
-  siteMap: ({ documents }) => {
+  siteMap: ({ documents, models }) => {
+    const pageModels = models.filter((m) => m.type === "page");
+
     return documents
-      .filter((d) => d.modelName === 'Page')
+      .filter((d) => pageModels.some((m) => m.name === d.modelName))
       .map((d) => {
         const page = d as any;
-        console.log('DEBUG: Document ID:', d.id);
         return {
           stableId: d.id,
           urlPath: page.slug === 'index' ? '/' : `/${page.slug}`,
